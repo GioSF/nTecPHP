@@ -15,7 +15,16 @@ class UniversalConnect implements IConnectInfo{
                 self::$servidor,
                 self::$login,
                 self::$senha,
-                self::$BD);
+                self::$BD
+                );
+        if(self::$conecta){
+            echo "Conexão bem sucedida.";
+        }
+        elseif (mysqli_connect_error(self::conecta)){
+            echo ("Não ofi possível conectar" . mysqli_connect_error());
+        }
+        
+        return self::conecta;
     }
     
 }
